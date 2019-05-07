@@ -4,6 +4,7 @@ VALIDAR USUARIO EXISTENTE AJAX
 
 var usuarioExistente = false;
 var correoExistente = false;
+var cedulaExistente = false;
 
 $("#usuarioRegistro").change(function(){
 
@@ -84,6 +85,43 @@ $("#correoRegistro").change(function(){
 
 });
 
+$("#cedulaRegistro").change(function(){
+
+	var cedula = $("#cedulaRegistro").val();
+
+	var datos = new FormData();
+	datos.append("validarCedula", cedula);
+	
+	$.ajax({
+		url:"views/modules/ajax.php",
+		method:"POST",
+		data: datos,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success:function(respuesta){
+			
+			if(respuesta == 0){
+
+				$("label[for='usuarioRegistro'] span").html('<p>La Cedula ya se encuentra registrada</p>');
+
+				correoExistente = true;
+			}
+
+			else{
+
+				$("label[for='usuarioRegistro'] span").html("");
+
+				correoExistente = false;
+
+			}
+		
+		}
+
+	});
+
+});
+
 /*=====  FIN VALIDAR USUARIO EXISTENTE AJAX  ======*/
 
 /*=============================================
@@ -95,7 +133,9 @@ function validarRegistro(){
 
 	var password = document.querySelector("#contrasenaRegistro").value;
 
-	var email = document.querySelector("#correoRegistro").value;
+    var email = document.querySelector("#correoRegistro").value;
+    
+    var cedula = document.querySelector("#cedulaRegistro").value;
 
 	
 
@@ -139,7 +179,7 @@ function validarRegistro(){
 
 		if(caracteres < 6){
 
-			document.querySelector("label[for='passwordRegistro']").innerHTML += "<br>Escriba por favor más de 6 caracteres.";
+			document.querySelector("label[for='usuarioRegistro']").innerHTML += "<br>Escriba por favor más de 6 caracteres.";
 
 			return false;
 		}
@@ -162,32 +202,45 @@ function validarRegistro(){
 
 		if(!expresion.test(email)){
 
-			document.querySelector("label[for='emailRegistro']").innerHTML += "<br>Escriba correctamente el Email.";
+			document.querySelector("label[for='usuarioRegistro']").innerHTML += "<br>Escriba correctamente el Email.";
 
 			return false;
 
 		}
 
-		if(emailExistente){
+		if(correoExistente){
 
-			document.querySelector("label[for='emailRegistro'] span").innerHTML = "<p>Este email ya existe en la base de datos</p>";
+			document.querySelector("label[for='usuarioRegistro'] span").innerHTML = "<p>Este correo ya existe en la base de datos</p>";
 
 			return false;
 		}
 
 	}
 
-	/* VALIDAR TÉRMINOS*/
+/* VALIDAR CEDULA */
 
-	if(!terminos){
+if(cedula != ""){
 
-		document.querySelector("form").innerHTML += "<br>No se logró el registro, acepte términos y condiciones!.";
-		document.querySelector("#usuarioRegistro").value = usuario;	
-		document.querySelector("#contrasenaRegistro").value = password;	
-		document.querySelector("#correoRegistro").value = email;
+    var caracteres = cedula.length;
+    var expresion = /^[0-9]/;
 
-		return false;
-	}
+    if(caracteres > 8){
+
+        document.querySelector("label[for='usuarioRegistro']").innerHTML += "<br>Escriba por favor menos de 8 caracteres.";
+
+        return false;
+    }
+
+    if(!expresion.test(cedula)){
+
+        document.querySelector("label[for='usuarioRegistro']").innerHTML += "<br>No escriba caracteres especiales.";
+
+        return false;
+
+    }
+
+}
+
 	
 return true;
 

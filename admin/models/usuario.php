@@ -133,4 +133,19 @@ class UsuarioModel{
 
 	}
 
+	
+	#VALIDAR CEDULA EXISTENTE
+	#-------------------------------------
+	public function validarCedulaModel($datosModel, $tabla){
+
+		$stmt = Conexion::conectar()->prepare("SELECT cedula FROM $tabla WHERE cedula = :cedula");
+		$stmt->bindParam(":cedula", $datosModel, PDO::PARAM_STR);	
+		$stmt->execute();
+
+		return $stmt->fetch();
+
+		$stmt->close();
+
+	}
+
 }

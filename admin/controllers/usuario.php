@@ -282,4 +282,26 @@ class Usuario{
 
 	}
 	
+	#VALIDAR CEDULA EXISTENTE
+	#-------------------------------------
+
+	public function validarCedulaController($validarCedula){
+
+		$datosController = $validarCedula;
+
+		$respuesta = Datos::validarCedulaModel($datosController, "usuario");
+
+		if(count($respuesta["cedula"]) > 0){
+
+			echo 0;
+
+		}
+
+		else{
+
+			echo 1;
+		}
+
+	}
+	
 }

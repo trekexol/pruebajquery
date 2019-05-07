@@ -26,6 +26,16 @@ class Ajax{
 
 		echo $respuesta;
 
+    }
+    
+    public function validarCedulaAjax(){
+
+		$datos = $this->validarCedula;
+
+		$respuesta = MvcController::validarCedulaController($datos); 
+
+		echo $respuesta;
+
 	}
 
 }
@@ -45,4 +55,13 @@ if(isset( $_POST["validarCorreo"])){
 	$b -> validarCorreoAjax();
 
 }
+
+if(isset( $_POST["validarCedula"])){
+
+	$b = new Ajax();
+	$b -> validarCedula = $_POST["validarCedula"];
+	$b -> validarCedulaAjax();
+
+}
+
 
