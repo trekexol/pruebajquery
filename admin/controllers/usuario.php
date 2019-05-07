@@ -237,5 +237,49 @@ class Usuario{
 		}
 
 	}
+
+	#VALIDAR USUARIO EXISTENTE
+	#-------------------------------------
+
+	public function validarUsuarioController($validarUsuario){
+
+		$datosController = $validarUsuario;
+
+		$respuesta = Datos::validarUsuarioModel($datosController, "usuario");
+
+		if(count($respuesta["usuario"]) > 0){
+
+			echo 0;
+
+		}
+
+		else{
+
+			echo 1;
+		}
+
+	}
+
+	#VALIDAR EMAIL EXISTENTE
+	#-------------------------------------
+
+	public function validarCorreoController($validarEmail){
+
+		$datosController = $validarEmail;
+
+		$respuesta = Datos::validarCorreoModel($datosController, "usuario");
+
+		if(count($respuesta["email"]) > 0){
+
+			echo 0;
+
+		}
+
+		else{
+
+			echo 1;
+		}
+
+	}
 	
 }

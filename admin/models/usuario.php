@@ -105,4 +105,32 @@ class UsuarioModel{
 
 	}
 
+	#VALIDAR USUARIO EXISTENTE
+	#-------------------------------------
+	public function validarUsuarioModel($datosModel, $tabla){
+
+		$stmt = Conexion::conectar()->prepare("SELECT usuario FROM $tabla WHERE usuario = :usuario");
+		$stmt->bindParam(":usuario", $datosModel, PDO::PARAM_STR);	
+		$stmt->execute();
+
+		return $stmt->fetch();
+
+		$stmt->close();
+
+	}
+
+	#VALIDAR EMAIL EXISTENTE
+	#-------------------------------------
+	public function validarCorreoModel($datosModel, $tabla){
+
+		$stmt = Conexion::conectar()->prepare("SELECT correo FROM $tabla WHERE correo = :correo");
+		$stmt->bindParam(":correo", $datosModel, PDO::PARAM_STR);	
+		$stmt->execute();
+
+		return $stmt->fetch();
+
+		$stmt->close();
+
+	}
+
 }

@@ -52,7 +52,7 @@ $("#correoRegistro").change(function(){
 	var email = $("#correoRegistro").val();
 
 	var datos = new FormData();
-	datos.append("validarEmail", email);
+	datos.append("validarCorreo", email);
 	
 	$.ajax({
 		url:"views/modules/ajax.php",
