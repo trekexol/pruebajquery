@@ -7,6 +7,7 @@ class Ajax{
 
 	public $validarUsuario;
 	public $validarCorreo;
+	public $validarCedula;
 
 	public function validarUsuarioAjax(){
 

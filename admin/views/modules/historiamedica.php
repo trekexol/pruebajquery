@@ -19,12 +19,15 @@
 			======================================-->
 	<div id="editarPerfil" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 
-		<form method="post">
+		<form method="post" onsubmit="return validarCedula()">
 			<h1 style="text-align:center; margin-bottom:30px;">Historial Médico</h1>
+			
+			<label style="background-color: #000;" for="validarRegistro" ><span></span></label>
+
 			<label for="">Nombre Animal</label>
 			<input type="text" class="form form-control" name="animal" style="margin-bottom:20px;" placeholder="Nombre del animal">
 			<label for="">Cédula Dueño</label>
-			<input type="text" class="form form-control" name="cedulaD" style="margin-bottom:20px;" placeholder="Cédula del dueño">
+			<input type="text" class="form form-control" name="cedulaD" style="margin-bottom:20px;" placeholder="Cédula del dueño" id="cedulaHistoria" >
 			<label for="">Tipo de animal</label>
 			<input type="text" class="form form-control" style="margin-bottom:20px;" placeholder="Tipo del animal (Ej: Perro)" name="tipoAnimal">
 			<label for="">Raza</label>

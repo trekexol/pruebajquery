@@ -3,7 +3,7 @@
 
 				<h1 id="tituloFormIngreso" style="background-color: #29335C;">REGISTRATE</h1>
 
-				<label style="background-color: #000;" for="usuarioRegistro" >Aqui debe ir una alerta<span></span></label>
+				<label style="background-color: #000;" for="usuarioRegistro" ><span></span></label>
 				<input class="form-control formIngreso" type="text" placeholder="Nombre" id="nombreRegistro" name="nombreRegistro" required>
 				<input class="form-control formIngreso" type="text" placeholder="Apellido" id="apellidoRegistro" name="apellidoRegistro" required>
 				<input class="form-control formIngreso" type="text" placeholder="Usuario" id="usuarioRegistro" name="usuarioRegistro" required>

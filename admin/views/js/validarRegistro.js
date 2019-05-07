@@ -85,6 +85,11 @@ $("#correoRegistro").change(function(){
 
 });
 
+/*=============================================
+VALIDAR CEDULA EXISTENTE AJAX
+=============================================*/
+
+
 $("#cedulaRegistro").change(function(){
 
 	var cedula = $("#cedulaRegistro").val();
@@ -148,7 +153,7 @@ function validarRegistro(){
 
 		if(caracteres > 10){
 
-			document.querySelector("label[for='usuarioRegistro']").innerHTML += "<br>Escriba por favor menos de 10 caracteres.";
+			document.querySelector("label[for='usuarioRegistro']").innerHTML += "<br>Escriba por favor 10 o menos caracteres.";
 
 			return false;
 		}
@@ -226,14 +231,14 @@ if(cedula != ""){
 
     if(caracteres > 8){
 
-        document.querySelector("label[for='usuarioRegistro']").innerHTML += "<br>Escriba por favor menos de 8 caracteres.";
+        document.querySelector("label[for='usuarioRegistro']").innerHTML += "<br>Escriba por favor 8 o menos caracteres.";
 
         return false;
     }
 
     if(!expresion.test(cedula)){
 
-        document.querySelector("label[for='usuarioRegistro']").innerHTML += "<br>No escriba caracteres especiales.";
+        document.querySelector("label[for='usuarioRegistro']").innerHTML += "<br>Solo puede escribir Numeros";
 
         return false;
 
